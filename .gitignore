@@ -25,3 +25,4 @@ database/
 
 # 日志
 *.log
+backend/.env
