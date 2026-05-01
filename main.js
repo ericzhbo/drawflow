@@ -141,30 +141,3 @@ ipcMain.handle('clear-all-data', async () => {
   }
   return { success: false };
 });
-
-// 启动时提示清除数据
-ipcMain.handle('prompt-clear-data', async () => {
-  const dbPath = process.env.DRAWFLOW_DB_PATH;
-  const hasData = fs.existsSync(dbPath);
-
-  if (!hasData) return { shouldClear: false };
-
-  const result = await dialog.showMessageBox(mainWindow, {
-    type: 'question',
-    title: '发现历史记录',
-    message: '检测到之前的生成记录',
-    detail: '是否要清除所有历史记录并重新开始？',
-    buttons: ['保留记录', '清除所有数据'],
-    defaultId: 0,
-    cancelId: 0
-  });
-
-  if (result.response === 1) {
-    clearAllUserData();
-    if (mainWindow) {
-      mainWindow.reload();
-    }
-    return { shouldClear: true };
-  }
-  return { shouldClear: false };
-});

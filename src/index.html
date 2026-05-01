@@ -1352,11 +1352,6 @@
           if (e.key === 'Escape') this.showDetail = false;
         });
         
-        // 启动时检查是否需要清除数据
-        if (window.electronAPI && window.electronAPI.promptClearData) {
-          window.electronAPI.promptClearData();
-        }
-        
         this.loadGenerations();
       },
       methods: {
