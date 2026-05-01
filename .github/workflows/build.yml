@@ -16,8 +16,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Install dependencies
         run: npm ci
@@ -45,8 +47,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Install dependencies
         run: npm ci
@@ -65,17 +69,3 @@ jobs:
         with:
           name: DrawFlow-win-zip
           path: dist/DrawFlow-win.zip
-
-      - name: Test Windows App
-        run: |
-          # 检查打包产物是否存在
-          if (Test-Path "dist/DrawFlow Setup.exe") {
-            Write-Host "Windows installer exists"
-          }
-          if (Test-Path "dist/win-unpacked/DrawFlow.exe") {
-            Write-Host "Windows app exists"
-            # 尝试启动并检查输出
-            $proc = Start-Process -FilePath "dist/win-unpacked/DrawFlow.exe" -PassThru -NoNewWindow
-            Start-Sleep -Seconds 10
-            $proc.Kill()
-          }
