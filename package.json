@@ -34,11 +34,12 @@
     "uuid": "^9.0.0"
   },
   "build": {
-    "appId": "com.drawflow.app",
-    "productName": "DrawFlow",
-    "directories": {
-      "output": "dist"
-    },
+      "appId": "com.drawflow.app",
+      "productName": "DrawFlow",
+      "publish": null,
+      "directories": {
+        "output": "dist"
+      },
     "files": [
       "main.js",
       "preload.js",
