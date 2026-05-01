@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+/dist/
+/.env
+
+# 忽略根目录 .env，但不忽略 backend/.env
+!.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 数据库
+*.db
+database/
+
+# 输出目录
+/output/
+
+# 日志
+*.log
